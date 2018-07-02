@@ -2,10 +2,28 @@ html {
   background-color: cyan;
 }
 
-.main{
+* {
+    box-sizing: border-box;
+}
+
+div.main{
   position: absolute;
-  left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+img{
+  display: inline-block;
+  width: auto;
+  height: 400px;
+  padding: 60px;
+  transition: 0.5s ;
+}
+img:hover{
+  transform: scale(0.8);
+}
+img:active{
+  transform: scale(0.7);
 }
