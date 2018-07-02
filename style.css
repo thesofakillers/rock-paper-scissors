@@ -29,22 +29,41 @@ div.center div p{
 }
 
 
-
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  padding-left: 0px;
+}
+footer ul.inline{
+  list-style-type: none;
+  padding: 0;
+}
+footer ul.inline li{
+  padding: 0px 12px;
+  text-align: center;
+  display: inline;
+}
 
 p{
   font-size: 16pt;
 }
 
-img{
+input{
   width: auto;
+  min-height: 100px;
   height: 340px;
   padding-left: 60px;
   transition: 0.5s ;
   padding-bottom: 0.5em;
 }
-img:hover{
+input:hover{
   transform: scale(0.9);
 }
-img:active{
+input:active{
   transform: scale(0.7);
+}
+input:focus{
+  outline : none;
 }

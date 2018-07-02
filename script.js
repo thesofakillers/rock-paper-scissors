@@ -99,4 +99,11 @@ function game(){
   }
 
 }
-game()
+
+
+const keys = Array.from(document.querySelectorAll('input'));
+
+keys.forEach(key => key.addEventListener('click', function(e){
+    console.log(e.target.alt);
+    e.target.blur();
+}));
