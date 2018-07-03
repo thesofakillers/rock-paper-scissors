@@ -29,6 +29,15 @@ div.center div p{
 }
 
 
+div.Information{
+  text-align: center;
+  position: fixed;
+  bottom: 15%;
+  width: 100%;
+  left: 0;
+}
+
+
 footer{
   position: fixed;
   bottom: 0;

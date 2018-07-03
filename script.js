@@ -7,6 +7,7 @@ function computerPlay(){
   var randomNumber = Math.floor(Math.random()*possiblePlays.length);
   return possiblePlays[randomNumber]
 }
+
 function playerPlay(){
   var possiblePlays = [
     "ROCK",
@@ -20,6 +21,7 @@ function playerPlay(){
   }
   return playerChoice;
 }
+
 function playRound (ComputerChoice, PlayerChoice) {
   var rockVSscissors = "Rock beats Scissors"
   var paperVSrock = "Paper beats Rock"
@@ -86,25 +88,37 @@ function game(){
   inputs.forEach(input => input.addEventListener('click', function(e){
     if (Rounds < 5){
       Rounds ++;
+      var roundHTML= document.querySelector("#Rounds");
+      roundHTML.textContent = "Rounds Played: " + String(Rounds);
       playerChoice = e.target.id;
       e.target.blur();
       console.log("\nRound " + String(Rounds))
       gameData = playRound(computerPlay(), playerChoice);
       console.log(gameData[0])
+      var gameDataHTML = document.querySelector("div.Information p")
+      gameDataHTML.textContent = gameData[0]
       if (gameData[1] == 1){
         playerWins ++;
+        var playerWinsHTML = document.querySelector("#playerWins");
+        playerWinsHTML.textContent = "Player Wins: " + String(playerWins);
       } else if (gameData[1] == -1){
         computerWins ++;
+        var computerWinsHTML = document.querySelector("#computerWins");
+        computerWinsHTML.textContent = "Computer Wins: " + String(computerWins);
       }
       console.log("Player: " + playerWins + " - Computer: " + computerWins)
     }
     if (Rounds == 5){
+      var finalHTML = document.querySelector("#final")
       if (playerWins > computerWins) {
         console.log("You've won " + playerWins  +" to " + computerWins + "!");
+        finalHTML.textContent = "You've won " + playerWins  +" to " + computerWins + "!"
       } else if (playerWins < computerWins){
         console.log("You've lost " + playerWins +" to " + computerWins + "!")
+        finalHTML.textContent = "You've lost " + playerWins +" to " + computerWins + "!"
       } else {
         console.log("Tie: "+ playerWins +" to " + computerWins + ".")
+        finalHTML.textContent = "Tie: "+ playerWins +" to " + computerWins + "."
       }
     }
 
