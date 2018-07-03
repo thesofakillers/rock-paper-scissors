@@ -73,37 +73,42 @@ function playRound (ComputerChoice, PlayerChoice) {
     result = "Tied round!"
   }
 
-  return [result + " " + message, outcome]
+  return([result + " " + message, outcome])
 }
+
 function game(){
   var gameData;
   var playerWins = 0;
   var computerWins = 0;
-  for (i = 0; i < 5; i++){
-    console.log("\nRound " + String(i+1))
-    gameData = playRound(computerPlay(), playerPlay());
-    console.log(gameData[0])
-    if (gameData[1] == 1){
-      playerWins ++;
-    } else if (gameData[1] == -1){
-      computerWins ++;
+  var playerChoice;
+  var Rounds = 0;
+  const inputs = Array.from(document.querySelectorAll('input'));
+  inputs.forEach(input => input.addEventListener('click', function(e){
+    if (Rounds < 5){
+      Rounds ++;
+      playerChoice = e.target.id;
+      e.target.blur();
+      console.log("\nRound " + String(Rounds))
+      gameData = playRound(computerPlay(), playerChoice);
+      console.log(gameData[0])
+      if (gameData[1] == 1){
+        playerWins ++;
+      } else if (gameData[1] == -1){
+        computerWins ++;
+      }
+      console.log("Player: " + playerWins + " - Computer: " + computerWins)
     }
-    console.log("Player: " + playerWins + " - Computer: " + computerWins)
-  }
-  if (playerWins > computerWins) {
-    console.log("You've won " + playerWins  +" to " + computerWins + "!");
-  } else if (playerWins < computerWins){
-    console.log("You've lost " + playerWins +" to " + computerWins + "!")
-  } else {
-    console.log("Tie: "+ playerWins +" to " + computerWins + ".")
-  }
+    if (Rounds == 5){
+      if (playerWins > computerWins) {
+        console.log("You've won " + playerWins  +" to " + computerWins + "!");
+      } else if (playerWins < computerWins){
+        console.log("You've lost " + playerWins +" to " + computerWins + "!")
+      } else {
+        console.log("Tie: "+ playerWins +" to " + computerWins + ".")
+      }
+    }
 
+  }));
 }
 
-
-const keys = Array.from(document.querySelectorAll('input'));
-
-keys.forEach(key => key.addEventListener('click', function(e){
-    console.log(e.target.alt);
-    e.target.blur();
-}));
+game();
