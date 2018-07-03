@@ -86,7 +86,7 @@ function game(){
   var Rounds = 0;
   const inputs = Array.from(document.querySelectorAll('input'));
   inputs.forEach(input => input.addEventListener('click', function(e){
-    if (Rounds < 5){
+    if (playerWins < 5 && computerWins < 5){
       Rounds ++;
       var roundHTML= document.querySelector("#Rounds");
       roundHTML.textContent = "Rounds Played: " + String(Rounds);
@@ -108,7 +108,7 @@ function game(){
       }
       console.log("Player: " + playerWins + " - Computer: " + computerWins)
     }
-    if (Rounds == 5){
+    if (playerWins == 5 || computerWins == 5){
       var finalHTML = document.querySelector("#final")
       if (playerWins > computerWins) {
         console.log("You've won " + playerWins  +" to " + computerWins + "!");
